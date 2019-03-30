@@ -1,0 +1,94 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "list",
+    "description": "An army list",
+    "type": "object",
+    "properties":
+    {
+       "name":
+       {
+          "description": "The name of a list item",
+          "type": "string"
+       },
+       "gameSizePts":
+       {
+          "description": "The game size this army is for",
+          "type": "number"
+       },
+       "commanders":
+       {
+           "description": "How many commanders are assigned to this army",
+           "type": "number"
+       },
+       "commanderLVL":
+       {
+           "description": "The levels of assigned commanders",
+           "type": "array" //of numbers?
+       },
+       "commanderAssignment":
+       {
+           "description": "Which units are assigned as commanders",
+           "type": "array" //of strings?
+       },
+       "bgs":
+       {
+           "description": "The battlegroups themselves",
+           "type": "object" //containing one of four key value pairs of hq: {}, armour: {}, infantry: {}, special: {}
+       }
+    },
+    "required": ["name", "age"]   
+ }
+ /*{
+    bgs: {
+     hq: {
+      units: [{
+       type: String,
+       amount: Number
+      }…],
+      transports: [{
+       type: String,
+       assignment: [
+        String,
+       }…]
+      }…]
+     },
+     armour: [
+      num: Number,
+      {
+      units: [{
+       type: String,
+       amount: Number
+      }…],
+      transports: [{
+       type: String,
+       assignment: [
+        String,
+       }…]
+      }…]
+     }...],
+     infantry: {
+      units: [{
+       type: String,
+       amount: Number
+      }…],
+      transports: [{
+       type: String,
+       assignment: [
+        String,
+       }…]
+      }…]
+     },
+     special: {
+      units: [{
+       type: String,
+       amount: Number
+      }…],
+      transports: [{
+       type: String,
+       assignment: [
+        String,
+       }…]
+      }…]
+     }
+    }
+   }*/
