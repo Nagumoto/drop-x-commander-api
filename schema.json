@@ -3,43 +3,85 @@
     "title": "list",
     "description": "An army list",
     "type": "object",
-    "properties":
-    {
-       "name":
-       {
-          "description": "The name of a list item",
-          "type": "string"
-       },
-       "gameSizePts":
-       {
-          "description": "The game size this army is for",
-          "type": "number"
-       },
-       "commanders":
-       {
-           "description": "How many commanders are assigned to this army",
-           "type": "number"
-       },
-       "commanderLVL":
-       {
-           "description": "The levels of assigned commanders",
-           "type": "array" //of numbers?
-       },
-       "commanderAssignment":
-       {
-           "description": "Which units are assigned as commanders",
-           "type": "array" //of strings?
-       },
-       "bgs":
-       {
-           "description": "The battlegroups themselves",
-           "type": "object" //containing one of four key value pairs of hq: {}, armour: {}, infantry: {}, special: {}
-       }
+    "properties": {
+        "name": {
+            "description": "Name this army",
+            "type": "string"
+        },
+        "gameSizePts": {
+            "description": "Set your game size (pts)",
+            "type": "number"
+        },
+        "commanders": {
+            "description": "Define the commanders assigned to this army",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "commanderLVL": {
+                        "type": "number"
+                    },
+                    "commanderAssignment": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "bgs": {
+            "description": "Define your battlegroups",
+            "type": "array",
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "units": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "unit": {
+                                        "type": "string"
+                                    },
+                                    "number": {
+                                        "type": "number"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "transports": {
+            "description": "Transport assignment",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "transport": {
+                        "type": "string"
+                    },
+                    "bg": {
+                        "type": "number"
+                    },
+                    "squad": {
+                        "type": "number"
+                    }
+                }
+            }
+        }
     },
-    "required": ["name", "age"]   
- }
- /*{
-    bgs: {
+    "required": [
+        "name",
+        "age"
+    ]
+}
+/*{
+    bgs: [
      hq: {
       units: [{
        type: String,
@@ -90,5 +132,5 @@
        }…]
       }…]
      }
-    }
+    ]
    }*/
