@@ -28,35 +28,28 @@
             }
         },
         "bgs": {
-            "description": "Define your battlegroups",
-            "type": "array",
-            "items": {
-                "type": "array",
-                "items": {
-                    "type": "object",
-                    "properties": {
-                        "name": {
-                            "type": "string"
-                        },
-                        "units": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "unit": {
-                                        "type": "string"
-                                    },
-                                    "number": {
-                                        "type": "number"
-                                    }
-                                }
-                            }
-                        }
-                    }
+            "description": "An object containing all Battlegroups",
+            "type": "object",
+            "properties": {
+                "hq": {
+                    "description": "All HQ Battlegroups",
+                    "$ref": "#/definitions/battlegroup"
+                },
+                "armour": {
+                    "description": "All Armour Battlegroups",
+                    "$ref": "#/definitions/battlegroup"
+                },
+                "infantry": {
+                    "description": "All Infantry Battlegroups",
+                    "$ref": "#/definitions/battlegroup"
+                },
+                "special": {
+                    "description": "All Special Battlegroups",
+                    "$ref": "#/definitions/battlegroup"
                 }
             }
         },
-        "transports": {
+        "transport": {
             "description": "Transport assignment",
             "type": "array",
             "items": {
@@ -73,6 +66,48 @@
                     }
                 }
             }
+        },
+        "airstrike": {
+            "description": "Airstrikes purchased",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "definitions": {
+            "battlegroup": {
+                "type": "array",
+                "items": {
+                    "description": "A single Battlegroup",
+                    "type": "array",
+                    "maxItems": 3,
+                    "items": {
+                        "description": "A single Squad",
+                        "type": "object",
+                        "properties": {
+                            "unitCategory": {
+                                "type": "string",
+                                "enum": [
+                                    "Command",
+                                    "Standard",
+                                    "Troops",
+                                    "Scout",
+                                    "Heavy",
+                                    "Support",
+                                    "Exotic"
+                                ]
+                            },
+                            "unitName": {
+                                "type": "string"
+                            },
+                            "squadSize": {
+                                "type": "number"
+                            },
+                            "commandAssignment": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                }
+            }
         }
-    }
-}
